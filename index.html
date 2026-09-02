@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Avaliação do Sono | Clínica Vitoni</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+
+      font-family: Arial, Helvetica, sans-serif;
+
+      background: #f5f7fa;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: #333;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+
+      background: #ffffff;
+
+      border-radius: 18px;
+
+      padding: 32px 24px;
+
+      box-shadow: 0 5px 25px rgba(0,0,0,0.10);
+
+      text-align: center;
+    }
+
+    .icone {
+      width: 70px;
+      height: 70px;
+
+      margin: 0 auto 20px;
+
+      border-radius: 50%;
+
+      background: #eef4f8;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 34px;
+    }
+
+    h1 {
+      color: #1f4e78;
+
+      font-size: 26px;
+
+      line-height: 1.25;
+
+      margin: 0 0 15px;
+    }
+
+    .subtitulo {
+      font-size: 17px;
+
+      line-height: 1.5;
+
+      margin-bottom: 25px;
+
+      color: #555;
+    }
+
+    .info {
+      background: #eef4f8;
+
+      border-radius: 10px;
+
+      padding: 15px;
+
+      margin-bottom: 25px;
+
+      text-align: left;
+
+      font-size: 15px;
+
+      line-height: 1.6;
+    }
+
+    .botao {
+      display: block;
+
+      width: 100%;
+
+      padding: 16px;
+
+      margin-top: 12px;
+
+      border: none;
+      border-radius: 10px;
+
+      background: #1f4e78;
+
+      color: #ffffff;
+
+      font-size: 17px;
+      font-weight: bold;
+
+      text-decoration: none;
+
+      cursor: pointer;
+    }
+
+    .botao:hover {
+      background: #163a5a;
+    }
+
+    .secundario {
+      background: #ffffff;
+
+      color: #1f4e78;
+
+      border: 2px solid #1f4e78;
+    }
+
+    .secundario:hover {
+      background: #eef4f8;
+    }
+
+    .aviso {
+      margin-top: 22px;
+
+      font-size: 13px;
+
+      line-height: 1.5;
+
+      color: #777;
+    }
+
+    #mensagem {
+      display: none;
+
+      background: #edf7ed;
+
+      color: #246b2e;
+
+      border-radius: 8px;
+
+      padding: 12px;
+
+      margin-top: 15px;
+
+      font-size: 14px;
+    }
+
+    .instagram {
+      display: none;
+
+      margin-bottom: 20px;
+
+      padding: 13px;
+
+      background: #fff8e5;
+
+      border-radius: 8px;
+
+      font-size: 14px;
+
+      line-height: 1.5;
+
+      color: #665119;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <div class="icone">
+      😴
+    </div>
+
+    <h1>
+      Como está a qualidade do seu sono?
+    </h1>
+
+    <div class="subtitulo">
+      Faça gratuitamente nossa avaliação de sonolência
+      e risco para Apneia Obstrutiva do Sono.
+    </div>
+
+
+    <div id="avisoInstagram" class="instagram">
+
+      <strong>Você está acessando pelo Instagram.</strong>
+
+      <br><br>
+
+      Se o questionário não aparecer após tocar no botão,
+      copie o link abaixo e abra no Safari ou Google Chrome.
+
+    </div>
+
+
+    <div class="info">
+
+      ✓ Questionário rápido
+
+      <br>
+
+      ✓ Resultado ao finalizar
+
+      <br>
+
+      ✓ Avaliação de sonolência
+
+      <br>
+
+      ✓ Avaliação de risco para apneia do sono
+
+    </div>
+
+
+    <a
+      class="botao"
+      href="https://script.google.com/macros/s/AKfycbwtm0nGEEK1PLyZJcCxlY2T3Mi9x0J-b8CJZc3Ivo4RKEvKh8APaEvZDpyKkQmqOm74/exec"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      INICIAR QUESTIONÁRIO
+    </a>
+
+
+    <button
+      class="botao secundario"
+      onclick="copiarLink()"
+      type="button"
+    >
+      COPIAR LINK DO QUESTIONÁRIO
+    </button>
+
+
+    <div id="mensagem">
+      ✓ Link copiado! Abra o Safari ou Chrome e cole o endereço.
+    </div>
+
+
+    <div class="aviso">
+
+      Este questionário é um instrumento de triagem
+      e não substitui avaliação ou diagnóstico realizado
+      por profissional de saúde.
+
+    </div>
+
+  </div>
+
+
+  <script>
+
+    var linkQuestionario =
+      'https://script.google.com/macros/s/AKfycbwtm0nGEEK1PLyZJcCxlY2T3Mi9x0J-b8CJZc3Ivo4RKEvKh8APaEvZDpyKkQmqOm74/exec';
+
+
+    /*
+    Detecta navegador interno do Instagram
+    */
+
+    var navegador =
+      navigator.userAgent ||
+      navigator.vendor ||
+      window.opera;
+
+
+    if (
+      navegador.indexOf('Instagram') > -1
+    ) {
+
+      document
+        .getElementById('avisoInstagram')
+        .style.display = 'block';
+
+    }
+
+
+    /*
+    Copiar link
+    */
+
+    function copiarLink() {
+
+      if (
+        navigator.clipboard &&
+        navigator.clipboard.writeText
+      ) {
+
+        navigator.clipboard
+          .writeText(linkQuestionario)
+          .then(function () {
+
+            mostrarMensagem();
+
+          });
+
+      } else {
+
+        var campo =
+          document.createElement('textarea');
+
+        campo.value =
+          linkQuestionario;
+
+        document.body.appendChild(campo);
+
+        campo.select();
+
+        document.execCommand('copy');
+
+        document.body.removeChild(campo);
+
+        mostrarMensagem();
+
+      }
+
+    }
+
+
+    function mostrarMensagem() {
+
+      var mensagem =
+        document.getElementById('mensagem');
+
+      mensagem.style.display =
+        'block';
+
+      setTimeout(
+        function () {
+
+          mensagem.style.display =
+            'none';
+
+        },
+        5000
+      );
+
+    }
+
+  </script>
+
+</body>
+</html>
