@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -8,358 +10,1314 @@
     content="width=device-width, initial-scale=1.0"
   >
 
+  <meta name="theme-color" content="#1f4e78">
+
   <title>Avaliação do Sono | Clínica Vitoni</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      padding: 20px;
-      min-height: 100vh;
-
-      font-family: Arial, Helvetica, sans-serif;
-
+      padding: 16px;
       background: #f5f7fa;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
+      font-family: Arial, Helvetica, sans-serif;
       color: #333;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .topo {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .marca {
+      color: #1f4e78;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
     .card {
-      width: 100%;
-      max-width: 480px;
-
       background: #ffffff;
-
-      border-radius: 18px;
-
-      padding: 32px 24px;
-
-      box-shadow: 0 5px 25px rgba(0,0,0,0.10);
-
-      text-align: center;
-    }
-
-    .icone {
-      width: 70px;
-      height: 70px;
-
-      margin: 0 auto 20px;
-
-      border-radius: 50%;
-
-      background: #eef4f8;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 34px;
+      padding: 25px;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.08);
     }
 
     h1 {
       color: #1f4e78;
-
-      font-size: 26px;
-
+      font-size: 27px;
       line-height: 1.25;
-
       margin: 0 0 15px;
     }
 
-    .subtitulo {
-      font-size: 17px;
+    h2 {
+      color: #1f4e78;
+      font-size: 21px;
+      margin: 0 0 18px;
+    }
 
-      line-height: 1.5;
+    p {
+      line-height: 1.55;
+    }
 
-      margin-bottom: 25px;
-
+    .introducao {
       color: #555;
     }
 
-    .info {
+    .destaque {
       background: #eef4f8;
-
-      border-radius: 10px;
-
-      padding: 15px;
-
-      margin-bottom: 25px;
-
-      text-align: left;
-
-      font-size: 15px;
-
-      line-height: 1.6;
+      border-left: 4px solid #1f4e78;
+      padding: 14px;
+      border-radius: 7px;
+      margin-top: 18px;
+      line-height: 1.5;
+      font-size: 14px;
     }
 
-    .botao {
+    label {
       display: block;
+      margin-top: 19px;
+      margin-bottom: 7px;
+      font-weight: bold;
+      line-height: 1.4;
+    }
 
+    input,
+    select {
       width: 100%;
+      min-height: 48px;
+      padding: 11px 12px;
+      font-size: 16px;
+      background: #fff;
+      color: #333;
+      border: 1px solid #c8c8c8;
+      border-radius: 8px;
+    }
 
-      padding: 16px;
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #1f4e78;
+      box-shadow: 0 0 0 3px rgba(31,78,120,0.12);
+    }
 
-      margin-top: 12px;
-
-      border: none;
-      border-radius: 10px;
-
+    button {
+      width: 100%;
+      min-height: 54px;
+      padding: 15px;
       background: #1f4e78;
-
-      color: #ffffff;
-
+      color: #fff;
+      border: 0;
+      border-radius: 10px;
       font-size: 17px;
       font-weight: bold;
-
-      text-decoration: none;
-
       cursor: pointer;
+      margin-bottom: 18px;
     }
 
-    .botao:hover {
-      background: #163a5a;
+    button:disabled {
+      opacity: .65;
+      cursor: not-allowed;
     }
 
-    .secundario {
-      background: #ffffff;
-
-      color: #1f4e78;
-
-      border: 2px solid #1f4e78;
+    .resultado {
+      display: none;
     }
 
-    .secundario:hover {
+    .resultado-titulo {
+      text-align: center;
+    }
+
+    .resultado-box {
+      padding: 20px;
+      margin: 15px 0;
       background: #eef4f8;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .pontuacao {
+      font-size: 34px;
+      font-weight: bold;
+      color: #1f4e78;
+      margin: 8px 0;
+    }
+
+    .classificacao {
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .orientacao {
+      margin-top: 20px;
+      padding: 17px;
+      background: #fff7e7;
+      border-radius: 10px;
+      line-height: 1.55;
+    }
+
+    .sucesso {
+      display: none;
+      margin-top: 14px;
+      padding: 13px;
+      background: #edf7ed;
+      color: #246b2e;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
     }
 
     .aviso {
-      margin-top: 22px;
-
       font-size: 13px;
-
       line-height: 1.5;
+      color: #666;
+      margin-top: 20px;
+    }
 
+    .novo {
+      margin-top: 20px;
+      background: #ffffff;
+      color: #1f4e78;
+      border: 2px solid #1f4e78;
+    }
+
+    .rodape {
+      text-align: center;
       color: #777;
-    }
-
-    #mensagem {
-      display: none;
-
-      background: #edf7ed;
-
-      color: #246b2e;
-
-      border-radius: 8px;
-
-      padding: 12px;
-
-      margin-top: 15px;
-
-      font-size: 14px;
-    }
-
-    .instagram {
-      display: none;
-
-      margin-bottom: 20px;
-
-      padding: 13px;
-
-      background: #fff8e5;
-
-      border-radius: 8px;
-
-      font-size: 14px;
-
+      font-size: 12px;
+      padding: 5px 10px 25px;
       line-height: 1.5;
-
-      color: #665119;
     }
 
-  </style>
-</head>
-
-<body>
-
-  <div class="card">
-
-    <div class="icone">
-      😴
-    </div>
-
-    <h1>
-      Como está a qualidade do seu sono?
-    </h1>
-
-    <div class="subtitulo">
-      Faça gratuitamente nossa avaliação de sonolência
-      e risco para Apneia Obstrutiva do Sono.
-    </div>
-
-
-    <div id="avisoInstagram" class="instagram">
-
-      <strong>Você está acessando pelo Instagram.</strong>
-
-      <br><br>
-
-      Se o questionário não aparecer após tocar no botão,
-      copie o link abaixo e abra no Safari ou Google Chrome.
-
-    </div>
-
-
-    <div class="info">
-
-      ✓ Questionário rápido
-
-      <br>
-
-      ✓ Resultado ao finalizar
-
-      <br>
-
-      ✓ Avaliação de sonolência
-
-      <br>
-
-      ✓ Avaliação de risco para apneia do sono
-
-    </div>
-
-
-    <a
-      class="botao"
-      href="https://script.google.com/macros/s/AKfycbwtm0nGEEK1PLyZJcCxlY2T3Mi9x0J-b8CJZc3Ivo4RKEvKh8APaEvZDpyKkQmqOm74/exec"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      INICIAR QUESTIONÁRIO
-    </a>
-
-
-    <button
-      class="botao secundario"
-      onclick="copiarLink()"
-      type="button"
-    >
-      COPIAR LINK DO QUESTIONÁRIO
-    </button>
-
-
-    <div id="mensagem">
-      ✓ Link copiado! Abra o Safari ou Chrome e cole o endereço.
-    </div>
-
-
-    <div class="aviso">
-
-      Este questionário é um instrumento de triagem
-      e não substitui avaliação ou diagnóstico realizado
-      por profissional de saúde.
-
-    </div>
-
-  </div>
-
-
-  <script>
-
-    var linkQuestionario =
-      'https://script.google.com/macros/s/AKfycbwtm0nGEEK1PLyZJcCxlY2T3Mi9x0J-b8CJZc3Ivo4RKEvKh8APaEvZDpyKkQmqOm74/exec';
-
-
-    /*
-    Detecta navegador interno do Instagram
-    */
-
-    var navegador =
-      navigator.userAgent ||
-      navigator.vendor ||
-      window.opera;
-
-
-    if (
-      navegador.indexOf('Instagram') > -1
-    ) {
-
-      document
-        .getElementById('avisoInstagram')
-        .style.display = 'block';
-
+    iframe {
+      display: none;
+      width: 0;
+      height: 0;
+      border: 0;
     }
 
+    @media (max-width: 600px) {
 
-    /*
-    Copiar link
-    */
+      body {
+        padding: 10px;
+      }
 
-    function copiarLink() {
+      .card {
+        padding: 20px;
+      }
 
-      if (
-        navigator.clipboard &&
-        navigator.clipboard.writeText
-      ) {
+      h1 {
+        font-size: 23px;
+      }
 
-        navigator.clipboard
-          .writeText(linkQuestionario)
-          .then(function () {
-
-            mostrarMensagem();
-
-          });
-
-      } else {
-
-        var campo =
-          document.createElement('textarea');
-
-        campo.value =
-          linkQuestionario;
-
-        document.body.appendChild(campo);
-
-        campo.select();
-
-        document.execCommand('copy');
-
-        document.body.removeChild(campo);
-
-        mostrarMensagem();
-
+      h2 {
+        font-size: 20px;
       }
 
     }
 
+  </style>
 
-    function mostrarMensagem() {
+</head>
 
-      var mensagem =
-        document.getElementById('mensagem');
+<body>
 
-      mensagem.style.display =
-        'block';
+<div class="container">
 
-      setTimeout(
-        function () {
+  <div class="topo">
+    <div class="marca">
+      Clínica Vitoni
+    </div>
+  </div>
 
-          mensagem.style.display =
-            'none';
 
-        },
-        5000
+  <form id="formulario">
+
+    <div class="card">
+
+      <h1>
+        Questionário de Sonolência e Risco para Apneia do Sono
+      </h1>
+
+      <p class="introducao">
+        Esta avaliação ajuda a identificar sonolência durante o dia
+        e fatores associados ao risco de Apneia Obstrutiva do Sono.
+      </p>
+
+      <div class="destaque">
+        ✓ Preenchimento rápido<br>
+        ✓ Resultado ao finalizar<br>
+        ✓ Avaliação de sonolência e risco para apneia
+      </div>
+
+      <p class="aviso">
+        Este questionário é um instrumento de triagem e não substitui
+        avaliação ou diagnóstico realizado por profissional de saúde.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>Identificação</h2>
+
+
+      <label for="nome">
+        Nome completo
+      </label>
+
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        autocomplete="name"
+        required
+      >
+
+
+      <label for="contato">
+        WhatsApp
+      </label>
+
+      <input
+        type="tel"
+        id="contato"
+        name="contato"
+        placeholder="(37) 99999-9999"
+        maxlength="15"
+        inputmode="numeric"
+        autocomplete="tel"
+        required
+      >
+
+
+      <label for="nascimento">
+        Data de nascimento
+      </label>
+
+      <input
+        type="date"
+        id="nascimento"
+        name="nascimento"
+        required
+      >
+
+
+      <label for="sexo">
+        Sexo
+      </label>
+
+      <select
+        id="sexo"
+        name="sexo"
+        required
+      >
+
+        <option value="">
+          Selecione
+        </option>
+
+        <option value="Feminino">
+          Feminino
+        </option>
+
+        <option value="Masculino">
+          Masculino
+        </option>
+
+      </select>
+
+
+      <label for="peso">
+        Peso (kg)
+      </label>
+
+      <input
+        type="text"
+        id="peso"
+        name="peso"
+        placeholder="Ex.: 70"
+        inputmode="decimal"
+        required
+      >
+
+
+      <label for="altura">
+        Altura (m)
+      </label>
+
+      <input
+        type="text"
+        id="altura"
+        name="altura"
+        placeholder="Ex.: 1,65"
+        inputmode="decimal"
+        required
+      >
+
+
+      <label for="pescoco">
+        Circunferência do pescoço (cm)
+      </label>
+
+      <input
+        type="text"
+        id="pescoco"
+        name="pescoco"
+        placeholder="Ex.: 38"
+        inputmode="decimal"
+        required
+      >
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>
+        Escala de Sonolência de Epworth
+      </h2>
+
+      <p>
+        Para cada situação, informe a chance de cochilar:
+      </p>
+
+      <p>
+        <strong>0</strong> — Nenhuma chance<br>
+        <strong>1</strong> — Pequena chance<br>
+        <strong>2</strong> — Moderada chance<br>
+        <strong>3</strong> — Alta chance
+      </p>
+
+
+      <label for="e1">
+        1. Sentado e lendo
+      </label>
+
+      <select id="e1" name="e1" required>
+        <option value="">Selecione</option>
+        <option value="0">0 — Nenhuma chance</option>
+        <option value="1">1 — Pequena chance</option>
+        <option value="2">2 — Moderada chance</option>
+        <option value="3">3 — Alta chance</option>
+      </select>
+
+
+      <label for="e2">
+        2. Assistindo televisão
+      </label>
+
+      <select id="e2" name="e2" required>
+        <option value="">Selecione</option>
+        <option value="0">0 — Nenhuma chance</option>
+        <option value="1">1 — Pequena chance</option>
+        <option value="2">2 — Moderada chance</option>
+        <option value="3">3 — Alta chance</option>
+      </select>
+
+
+      <label for="e3">
+        3. Sentado em lugar público sem atividade
+      </label>
+
+      <select id="e3" name="e3" required>
+        <option value="">Selecione</option>
+        <option value="0">0 — Nenhuma chance</option>
+        <option value="1">1 — Pequena chance</option>
+        <option value="2">2 — Moderada chance</option>
+        <option value="3">3 — Alta chance</option>
+      </select>
+
+
+      <label for="e4">
+        4. Como passageiro durante aproximadamente 1 hora sem parar
+      </label>
+
+      <select id="e4" name="e4" required>
+        <option value="">Selecione</option>
+        <option value="0">0 — Nenhuma chance</option>
+        <option value="1">1 — Pequena chance</option>
+        <option value="2">2 — Moderada chance</option>
+        <option value="3">3 — Alta chance</option>
+      </select>
+
+
+      <label for="e5">
+        5. Deitado para descansar à tarde
+      </label>
+
+      <select id="e5" name="e5" required>
+        <option value="">Selecione</option>
+        <option value="0">0 — Nenhuma chance</option>
+        <option value="1">1 — Pequena chance</option>
+        <option value="2">2 — Moderada chance</option>
+        <option value="3">3 — Alta chance</option>
+      </select>
+
+
+      <label for="e6">
+        6. Sentado e conversando com alguém
+      </label>
+
+      <select id="e6" name="e6" required>
+        <option value="">Selecione</option>
+        <option value="0">0 — Nenhuma chance</option>
+        <option value="1">1 — Pequena chance</option>
+        <option value="2">2 — Moderada chance</option>
+        <option value="3">3 — Alta chance</option>
+      </select>
+
+
+      <label for="e7">
+        7. Sentado calmamente após o almoço, sem álcool
+      </label>
+
+      <select id="e7" name="e7" required>
+        <option value="">Selecione</option>
+        <option value="0">0 — Nenhuma chance</option>
+        <option value="1">1 — Pequena chance</option>
+        <option value="2">2 — Moderada chance</option>
+        <option value="3">3 — Alta chance</option>
+      </select>
+
+
+      <label for="e8">
+        8. Em um carro parado por alguns minutos no trânsito intenso
+      </label>
+
+      <select id="e8" name="e8" required>
+        <option value="">Selecione</option>
+        <option value="0">0 — Nenhuma chance</option>
+        <option value="1">1 — Pequena chance</option>
+        <option value="2">2 — Moderada chance</option>
+        <option value="3">3 — Alta chance</option>
+      </select>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>
+        STOP-BANG
+      </h2>
+
+
+      <label for="ronco">
+        Você ronca alto?
+      </label>
+
+      <select id="ronco" name="ronco" required>
+        <option value="">Selecione</option>
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+
+
+      <label for="cansaco">
+        Você frequentemente se sente cansado ou sonolento durante o dia?
+      </label>
+
+      <select id="cansaco" name="cansaco" required>
+        <option value="">Selecione</option>
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+
+
+      <label for="apneia">
+        Alguém já observou você parar de respirar durante o sono?
+      </label>
+
+      <select id="apneia" name="apneia" required>
+        <option value="">Selecione</option>
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+
+
+      <label for="pressao">
+        Você tem pressão alta ou faz tratamento para pressão alta?
+      </label>
+
+      <select id="pressao" name="pressao" required>
+        <option value="">Selecione</option>
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+
+    </div>
+
+
+    <button
+      type="submit"
+      id="btnEnviar"
+    >
+      CALCULAR MEU RESULTADO
+    </button>
+
+  </form>
+
+
+  <div
+    id="resultado"
+    class="card resultado"
+  >
+
+    <div class="resultado-titulo">
+
+      <h2>
+        Resultado da sua avaliação
+      </h2>
+
+      <p id="nomeResultado"></p>
+
+    </div>
+
+
+    <div class="resultado-box">
+
+      <strong>
+        Escala de Sonolência de Epworth
+      </strong>
+
+      <div
+        id="epworth"
+        class="pontuacao"
+      ></div>
+
+      <div
+        id="classEpworth"
+        class="classificacao"
+      ></div>
+
+    </div>
+
+
+    <div class="resultado-box">
+
+      <strong>
+        STOP-BANG
+      </strong>
+
+      <div
+        id="stopBang"
+        class="pontuacao"
+      ></div>
+
+      <div
+        id="classStopBang"
+        class="classificacao"
+      ></div>
+
+    </div>
+
+
+    <div class="orientacao">
+
+      <strong>
+        Importante
+      </strong>
+
+      <br><br>
+
+      Estes resultados representam uma triagem.
+
+      <br><br>
+
+      Caso haja indicação de sonolência excessiva ou risco para
+      Apneia Obstrutiva do Sono, recomendamos avaliação com
+      profissional de saúde.
+
+    </div>
+
+
+    <div
+      id="sucesso"
+      class="sucesso"
+    >
+      ✓ Avaliação concluída com sucesso.
+    </div>
+
+
+    <p class="aviso">
+
+      O resultado deste questionário não representa diagnóstico
+      médico e não substitui avaliação profissional.
+
+    </p>
+
+
+    <button
+      type="button"
+      class="novo"
+      onclick="novaAvaliacao()"
+    >
+      FAZER NOVA AVALIAÇÃO
+    </button>
+
+  </div>
+
+
+  <div class="rodape">
+
+    Clínica Vitoni<br>
+    Cuidado integrado para sua saúde e seu sono.
+
+  </div>
+
+</div>
+
+
+<!--
+O formulário abaixo envia os dados silenciosamente
+para o Google Apps Script.
+-->
+
+<form
+  id="envioGoogle"
+  method="POST"
+  action="https://script.google.com/macros/s/AKfycbwtm0nGEEK1PLyZJcCxlY2T3Mi9x0J-b8CJZc3Ivo4RKEvKh8APaEvZDpyKkQmqOm74/exec"
+  target="respostaGoogle"
+  style="display:none;"
+>
+
+  <input name="nome" id="gNome">
+  <input name="contato" id="gContato">
+  <input name="nascimento" id="gNascimento">
+  <input name="sexo" id="gSexo">
+
+  <input name="peso" id="gPeso">
+  <input name="altura" id="gAltura">
+  <input name="pescoco" id="gPescoco">
+
+  <input name="e1" id="gE1">
+  <input name="e2" id="gE2">
+  <input name="e3" id="gE3">
+  <input name="e4" id="gE4">
+  <input name="e5" id="gE5">
+  <input name="e6" id="gE6">
+  <input name="e7" id="gE7">
+  <input name="e8" id="gE8">
+
+  <input name="ronco" id="gRonco">
+  <input name="cansaco" id="gCansaco">
+  <input name="apneia" id="gApneia">
+  <input name="pressao" id="gPressao">
+
+</form>
+
+
+<iframe
+  name="respostaGoogle"
+  id="respostaGoogle"
+></iframe>
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+
+  var formulario =
+    document.getElementById('formulario');
+
+  var contato =
+    document.getElementById('contato');
+
+  var botao =
+    document.getElementById('btnEnviar');
+
+
+  /*
+  ========================================
+  MÁSCARA DO WHATSAPP
+  ========================================
+  */
+
+  contato.addEventListener('input', function (e) {
+
+    var valor =
+      e.target.value.replace(/\D/g, '');
+
+    if (valor.length > 11) {
+      valor = valor.substring(0, 11);
+    }
+
+    if (valor.length === 11) {
+
+      valor = valor.replace(
+        /^(\d{2})(\d{5})(\d{4})$/,
+        '($1) $2-$3'
       );
 
     }
 
-  </script>
+    else if (valor.length >= 7) {
+
+      valor = valor.replace(
+        /^(\d{2})(\d{4})(\d{0,4})$/,
+        '($1) $2-$3'
+      );
+
+    }
+
+    else if (valor.length > 2) {
+
+      valor = valor.replace(
+        /^(\d{2})(\d+)/,
+        '($1) $2'
+      );
+
+    }
+
+    else if (valor.length > 0) {
+
+      valor = '(' + valor;
+
+    }
+
+    e.target.value = valor;
+
+  });
+
+
+  /*
+  ========================================
+  ENVIO
+  ========================================
+  */
+
+  formulario.addEventListener('submit', function (e) {
+
+    e.preventDefault();
+
+
+    if (!formulario.checkValidity()) {
+
+      formulario.reportValidity();
+
+      return;
+
+    }
+
+
+    botao.disabled = true;
+
+    botao.innerHTML =
+      'CALCULANDO...';
+
+
+    /*
+    ========================================
+    DADOS
+    ========================================
+    */
+
+    var nome =
+      document.getElementById('nome').value;
+
+    var contatoValor =
+      document.getElementById('contato').value;
+
+    var nascimento =
+      document.getElementById('nascimento').value;
+
+    var sexo =
+      document.getElementById('sexo').value;
+
+
+    var peso =
+      numero(
+        document.getElementById('peso').value
+      );
+
+    var altura =
+      numero(
+        document.getElementById('altura').value
+      );
+
+    var pescoco =
+      numero(
+        document.getElementById('pescoco').value
+      );
+
+
+    if (
+      !peso ||
+      !altura ||
+      !pescoco
+    ) {
+
+      alert(
+        'Confira os campos Peso, Altura e Circunferência do pescoço.'
+      );
+
+      botao.disabled = false;
+
+      botao.innerHTML =
+        'CALCULAR MEU RESULTADO';
+
+      return;
+
+    }
+
+
+    if (altura > 3) {
+
+      alert(
+        'Informe a altura em metros. Exemplo: 1,65.'
+      );
+
+      botao.disabled = false;
+
+      botao.innerHTML =
+        'CALCULAR MEU RESULTADO';
+
+      return;
+
+    }
+
+
+    /*
+    ========================================
+    IDADE
+    ========================================
+    */
+
+    var partesNascimento =
+      nascimento.split('-');
+
+    var dataNascimento =
+      new Date(
+        Number(partesNascimento[0]),
+        Number(partesNascimento[1]) - 1,
+        Number(partesNascimento[2])
+      );
+
+    var hoje =
+      new Date();
+
+
+    var idade =
+      hoje.getFullYear() -
+      dataNascimento.getFullYear();
+
+
+    var diferencaMes =
+      hoje.getMonth() -
+      dataNascimento.getMonth();
+
+
+    if (
+      diferencaMes < 0 ||
+      (
+        diferencaMes === 0 &&
+        hoje.getDate() <
+        dataNascimento.getDate()
+      )
+    ) {
+
+      idade--;
+
+    }
+
+
+    /*
+    ========================================
+    IMC
+    ========================================
+    */
+
+    var imc =
+      peso / (altura * altura);
+
+
+    /*
+    ========================================
+    EPWORTH
+    ========================================
+    */
+
+    var e1 = valorNumero('e1');
+    var e2 = valorNumero('e2');
+    var e3 = valorNumero('e3');
+    var e4 = valorNumero('e4');
+    var e5 = valorNumero('e5');
+    var e6 = valorNumero('e6');
+    var e7 = valorNumero('e7');
+    var e8 = valorNumero('e8');
+
+
+    var totalEpworth =
+      e1 + e2 + e3 + e4 +
+      e5 + e6 + e7 + e8;
+
+
+    var classificacaoEpworth;
+
+
+    if (totalEpworth <= 7) {
+
+      classificacaoEpworth =
+        'Sonolência normal';
+
+    }
+
+    else if (totalEpworth <= 10) {
+
+      classificacaoEpworth =
+        'Sonolência média/leve';
+
+    }
+
+    else if (totalEpworth <= 15) {
+
+      classificacaoEpworth =
+        'Sonolência excessiva moderada';
+
+    }
+
+    else {
+
+      classificacaoEpworth =
+        'Sonolência excessiva grave';
+
+    }
+
+
+    /*
+    ========================================
+    STOP-BANG
+    ========================================
+    */
+
+    var ronco =
+      document.getElementById('ronco').value;
+
+    var cansaco =
+      document.getElementById('cansaco').value;
+
+    var apneia =
+      document.getElementById('apneia').value;
+
+    var pressao =
+      document.getElementById('pressao').value;
+
+
+    var stopS =
+      ronco === 'Sim' ? 1 : 0;
+
+    var stopT =
+      cansaco === 'Sim' ? 1 : 0;
+
+    var stopO =
+      apneia === 'Sim' ? 1 : 0;
+
+    var stopP =
+      pressao === 'Sim' ? 1 : 0;
+
+    var stopB =
+      imc > 35 ? 1 : 0;
+
+    var stopA =
+      idade > 50 ? 1 : 0;
+
+
+    var stopN = 0;
+
+
+    if (
+      sexo === 'Masculino' &&
+      pescoco > 43
+    ) {
+
+      stopN = 1;
+
+    }
+
+
+    if (
+      sexo === 'Feminino' &&
+      pescoco > 41
+    ) {
+
+      stopN = 1;
+
+    }
+
+
+    var stopG =
+      sexo === 'Masculino'
+        ? 1
+        : 0;
+
+
+    var totalStopBang =
+      stopS +
+      stopT +
+      stopO +
+      stopP +
+      stopB +
+      stopA +
+      stopN +
+      stopG;
+
+
+    var classificacaoStopBang;
+
+
+    if (totalStopBang <= 2) {
+
+      classificacaoStopBang =
+        'Baixo risco';
+
+    }
+
+    else if (totalStopBang <= 4) {
+
+      classificacaoStopBang =
+        'Risco intermediário';
+
+    }
+
+    else {
+
+      classificacaoStopBang =
+        'Alto risco';
+
+    }
+
+
+    /*
+    ========================================
+    MOSTRAR RESULTADO
+    ========================================
+    */
+
+    document
+      .getElementById('nomeResultado')
+      .innerText =
+      nome + ', confira seus resultados:';
+
+
+    document
+      .getElementById('epworth')
+      .innerText =
+      totalEpworth + ' / 24';
+
+
+    document
+      .getElementById('classEpworth')
+      .innerText =
+      classificacaoEpworth;
+
+
+    document
+      .getElementById('stopBang')
+      .innerText =
+      totalStopBang + ' / 8';
+
+
+    document
+      .getElementById('classStopBang')
+      .innerText =
+      classificacaoStopBang;
+
+
+    /*
+    ========================================
+    PREPARAR ENVIO AO GOOGLE
+    ========================================
+    */
+
+    document.getElementById('gNome').value =
+      nome;
+
+    document.getElementById('gContato').value =
+      contatoValor;
+
+    document.getElementById('gNascimento').value =
+      nascimento;
+
+    document.getElementById('gSexo').value =
+      sexo;
+
+    document.getElementById('gPeso').value =
+      document.getElementById('peso').value;
+
+    document.getElementById('gAltura').value =
+      document.getElementById('altura').value;
+
+    document.getElementById('gPescoco').value =
+      document.getElementById('pescoco').value;
+
+    document.getElementById('gE1').value = e1;
+    document.getElementById('gE2').value = e2;
+    document.getElementById('gE3').value = e3;
+    document.getElementById('gE4').value = e4;
+    document.getElementById('gE5').value = e5;
+    document.getElementById('gE6').value = e6;
+    document.getElementById('gE7').value = e7;
+    document.getElementById('gE8').value = e8;
+
+    document.getElementById('gRonco').value =
+      ronco;
+
+    document.getElementById('gCansaco').value =
+      cansaco;
+
+    document.getElementById('gApneia').value =
+      apneia;
+
+    document.getElementById('gPressao').value =
+      pressao;
+
+
+    /*
+    ========================================
+    ENVIAR SILENCIOSAMENTE
+    ========================================
+    */
+
+    try {
+
+      document
+        .getElementById('envioGoogle')
+        .submit();
+
+    }
+
+    catch (erro) {
+
+      console.log(
+        'Falha no envio para a planilha:',
+        erro
+      );
+
+    }
+
+
+    /*
+    ========================================
+    TROCAR TELA
+    ========================================
+    */
+
+    formulario.style.display =
+      'none';
+
+
+    document
+      .getElementById('resultado')
+      .style.display =
+      'block';
+
+
+    document
+      .getElementById('sucesso')
+      .style.display =
+      'block';
+
+
+    botao.disabled =
+      false;
+
+
+    botao.innerHTML =
+      'CALCULAR MEU RESULTADO';
+
+
+    window.scrollTo(
+      0,
+      0
+    );
+
+  });
+
+});
+
+
+/*
+========================================
+FUNÇÕES AUXILIARES
+========================================
+*/
+
+function numero(valor) {
+
+  return Number(
+    String(valor)
+      .trim()
+      .replace(',', '.')
+  );
+
+}
+
+
+function valorNumero(id) {
+
+  return Number(
+    document
+      .getElementById(id)
+      .value
+  );
+
+}
+
+
+function novaAvaliacao() {
+
+  document
+    .getElementById('formulario')
+    .reset();
+
+
+  document
+    .getElementById('resultado')
+    .style.display =
+    'none';
+
+
+  document
+    .getElementById('formulario')
+    .style.display =
+    'block';
+
+
+  document
+    .getElementById('sucesso')
+    .style.display =
+    'none';
+
+
+  window.scrollTo(
+    0,
+    0
+  );
+
+}
+
+</script>
 
 </body>
+
 </html>
